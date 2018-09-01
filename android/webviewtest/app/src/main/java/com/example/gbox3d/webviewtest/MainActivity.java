@@ -38,45 +38,10 @@ public class MainActivity extends AppCompatActivity {
 
         Log.d("test","hello");
 
-        /*
-
-//        mWebView =  (WebView)findViewById(R.id.id_webview);
-
-        mWebView = (WebView) findViewById(R.id.id_webview);
-
-        WebSettings webSettings = mWebView.getSettings();
-        webSettings.setJavaScriptEnabled(true);
-
-        mWebView.setWebViewClient(new WebViewClient() {
-            @Override
-            public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                Log.d("test",url);
-                return true;
-            }
-        });
-
-        mWebView.loadUrl("http://worweb.cafe24.com:3000/");
-
-        //mWebView.loadUrl("https://192.168.123.185:8080");
-        //mWebView.loadUrl("https://m.naver.com");
-        //mWebView.loadUrl("file:///android_asset/index.html");
-
-
-*/
-
         WebView mWebView =  (WebView)findViewById(R.id.id_webview);
 
-
-
-//        mWebView.addJavascriptInterface(new dummyWebInterface(
-//                        mWebView
-//                ),
-//                "dummyWIO");
         m_dummyWIO = new dummyWebInterface(mWebView);
         m_WIOFile = new fileInterface(mWebView);
-
-
 
 
         WebSettings set = mWebView.getSettings();
@@ -114,10 +79,6 @@ public class MainActivity extends AppCompatActivity {
             //}
         }
 
-
-
-
-
         mWebView.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
@@ -131,14 +92,7 @@ public class MainActivity extends AppCompatActivity {
         mWebView.clearHistory();
         mWebView.clearFormData();
         mWebView.clearCache(true);
-        //mWebView.loadUrl("http://zeany.tistory.com");
-        //mWebView.loadUrl("http://worweb.cafe24.com:3000/");
         mWebView.loadUrl("http://192.168.0.15:3000/");
-
-
-        //출처: http://zeany.net/4 [소소한 IT 이야기]
-        //mWebView.loadUrl("https://m.naver.com/");
-
 
     }
 }
