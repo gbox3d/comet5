@@ -1,5 +1,6 @@
 package com.comet5;
 
+import android.app.Activity;
 import android.os.Build;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -11,12 +12,14 @@ import com.example.gbox3d.webviewtest.R;
 public class core {
     public static dummyWebInterface m_dummyWIO;
     public static fileInterface m_WIOFile;
+    public static gpsInterface m_WIOgps;
 
-    public static void startwebview(String appUrl,WebView mWebView)
+    public static void startwebview(String appUrl, WebView mWebView, Activity _activity)
     {
 
         m_dummyWIO = new dummyWebInterface(mWebView);
         m_WIOFile = new fileInterface(mWebView);
+        m_WIOgps = new gpsInterface(mWebView,_activity);
 
 
         WebSettings set = mWebView.getSettings();

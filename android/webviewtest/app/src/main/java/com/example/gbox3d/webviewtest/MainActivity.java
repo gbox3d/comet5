@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
         mWebView =  (WebView)findViewById(R.id.id_webview);
 
-        com.comet5.core.startwebview("http://192.168.0.15:3000/",mWebView);
+        //웹뷰시작
+        com.comet5.core.startwebview("http://192.168.0.15:3000/",mWebView,this);
 
     }
 }
