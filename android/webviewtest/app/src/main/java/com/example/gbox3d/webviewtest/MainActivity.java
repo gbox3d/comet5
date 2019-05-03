@@ -40,7 +40,11 @@ public class MainActivity extends AppCompatActivity {
         mWebView =  (WebView)findViewById(R.id.id_webview);
 
         //웹뷰시작
-        com.comet5.core.startwebview("http://192.168.0.15:3000/",mWebView,this);
+        //com.comet5.core.startwebview("http://192.168.0.13:3000/",mWebView,this);
+        com.comet5.core.startwebview("http://worweb.cafe24.com:3000/agent/main/",mWebView,this);
+
+
+
 
     }
 }

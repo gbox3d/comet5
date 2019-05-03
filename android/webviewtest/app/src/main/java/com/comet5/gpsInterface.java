@@ -111,10 +111,16 @@ public class gpsInterface extends Handler implements LocationListener {
                 try {
                     if (msg.arg1 == 0) {
                         _jsonTemp.put("result", "ok");
-                        _jsonTemp.put("accuracy", loc.getAccuracy());
-                        _jsonTemp.put("lat", loc.getLatitude());
-                        _jsonTemp.put("lon", loc.getLongitude());
-                        _jsonTemp.put("time", loc.getTime());
+
+                        JSONObject _coord = new JSONObject();
+
+
+                        _coord.put("accuracy", loc.getAccuracy());
+                        _coord.put("latitude", loc.getLatitude());
+                        _coord.put("longitude", loc.getLongitude());
+                        _coord.put("time", loc.getTime());
+
+                        _jsonTemp.put("coords",_coord);
 
                     } else {
                         _jsonTemp.put("result", "err");
@@ -125,6 +131,7 @@ public class gpsInterface extends Handler implements LocationListener {
                 }
                 catch (JSONException e) {
                     e.printStackTrace();
+                    mWebView.loadUrl("javascript:" + TAG + ".OnErrorGps(" + e.toString() + ");");
                 }
 
             }
@@ -139,6 +146,7 @@ public class gpsInterface extends Handler implements LocationListener {
                 }
                 catch (JSONException e) {
                     e.printStackTrace();
+                    mWebView.loadUrl("javascript:" + TAG + ".OnErrorGps(" + e.toString() + ");");
                 }
 
             }

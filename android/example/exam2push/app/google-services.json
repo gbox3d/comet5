@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "892968052028",
+    "firebase_url": "https://mypush-925cd.firebaseio.com",
+    "project_id": "mypush-925cd",
+    "storage_bucket": "mypush-925cd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892968052028:android:5db9960889188914",
+        "android_client_info": {
+          "package_name": "com.boltec.gbox3d.exam2push"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892968052028-88bv3af23ovl4hibvllh6fa4qn2g0g47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtakXwVclwa9XdN5q1ezGBzmHiMhcl3as"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
