@@ -23,25 +23,36 @@ Template.hello.events({
 
     console.log('test')
 
-    instance.comet5.dummyWIO.setCallback(
-      {
-        OnCallback : ()=> {
-          console.log('hello comet5')
-          instance.counter.set(instance.counter.get() + 1);
-        }
-      }
-    )
-    instance.comet5.dummyWIO.Test()
-  },
-  'click [name="WIOgps"]'(event, instance) {
+    instance.comet5.dummyWIO.Test({
+      msg : "hello comet5",
+      onCallback : (_)=> {
+        instance.find('[name="dummyWIO"] [name="output"]').innerText = _
 
-    instance.comet5.WIOgps.setCallback({
-      OnCallback : (_)=> {
+        instance.counter.set(instance.counter.get() + 1);
+      }
+    })
+  },
+  'click [name="WIOgps"] button'(event, instance) {
+
+    instance.comet5.WIOgps.getLastLocation({
+      onCallback : (_)=> {
         console.log(_)
+        instance.find('[name="WIOgps"] [name="output"]').innerText = `lat : ${_.latitude} lng : ${_.longitude}`
+      }
+    })
+
+  },
+
+  'click [name="fcmInterface"] button'(event, instance) {
+
+
+    instance.comet5.fcmInterface.getToken({
+      onCallback : (_)=> {
+        console.log(_)
+        instance.find('[name="fcmInterface"] [name="output"]').innerText = _
 
       }
     })
-    instance.comet5.WIOgps.getLastLocation()
 
-  }
+  },
 });

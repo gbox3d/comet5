@@ -3,23 +3,20 @@ export {comet5}
 
 function comet5() {
 
-  //let _interface = {}
 
-  //console.log(dummWIO)
-
+  //fcm
   if(global.fcmInterface === undefined) {
 
     console.log('emulate fcm interface')
 
     this.fcmInterface = {
-      getToken :  ()=> {
+      getToken : ({onCallback})=> {
 
-        if(this.fcmInterface.OnCallback !== undefined) {
-          this.fcmInterface.OnCallback("xxxxxxx")
-        }
-      },
-      setCallback : (cb) => {
-        this.fcmInterface.OnCallback = cb
+        onCallback("xxxxxxxitisfcmtokentestxxxxxxxxx")
+
+        // if(this.fcmInterface.OnCallback !== undefined) {
+        //   this.fcmInterface.OnCallback("xxxxxxx")
+        // }
       }
     }
 
@@ -28,18 +25,10 @@ function comet5() {
 
     console.log('find fcm interface')
 
-    // fcmInterface.OnCallback = _=>{
-    //   console.log(_)
-    // }
-    //
-    // fcmInterface.getFcmToken('')
-
     this.fcmInterface = {
-      getToken : ()=> {
+      getToken : ({onCallback})=> {
+        fcmInterface.OnCallback = onCallback
         fcmInterface.getFcmToken('')
-      },
-      setCallback : (cb) => {
-        fcmInterface.OnCallback = cb
       }
     }
 
@@ -49,11 +38,9 @@ function comet5() {
   if(global.dummyWIO) {
     console.log('find dumwIO interface')
     this.dummyWIO = {
-      Test : (msg)=> {
+      Test : ({msg,onCallback})=> {
+        dummyWIO.OnCallback = onCallback
         dummyWIO.Test(msg);
-      },
-      setCallback : ({OnCallback})=> {
-        dummyWIO.OnCallback = OnCallback
       }
     }
 
@@ -61,11 +48,8 @@ function comet5() {
   else {
     console.log('emulate dumyWIO interface')
     this.dummyWIO = {
-      Test : (msg)=> {
-        if(this.OnCallback) this.OnCallback(msg)
-      },
-      setCallback : ({OnCallback})=> {
-        this.OnCallback = OnCallback
+      Test : ({msg,onCallback})=> {
+        onCallback(msg)
       }
     }
 
@@ -77,11 +61,9 @@ function comet5() {
 
     this.WIOgps = {
 
-      setCallback : ({OnCallback,OnErr})=> {
-        WIOgps.OnCallbackGps = OnCallback
-        WIOgps.OnErrorGps = OnErr
-      },
-      getLastLocation : ()=> {
+      getLastLocation : ({onCallback,onErr})=> {
+        WIOgps.OnCallbackGps = onCallback
+        WIOgps.OnErrorGps = onErr
         WIOgps.getLastLocation()
       }
     }
@@ -91,19 +73,14 @@ function comet5() {
     console.log('emulate WIOgps interface')
     this.WIOgps = {
 
-      setCallback : ({OnCallback,OnErr})=> {
-        this.OnCallbackGps = OnCallback
-        this.OnErrorGps = OnErr
-      },
-      getLastLocation : ()=> {
-        if(this.OnCallbackGps) {
-          this.OnCallbackGps({
-            accuracy : 100,
-            latitude : 35.865907,
-            longitude : 126.8576322481264,
-            time : new Date()
-          })
-        }
+      getLastLocation : ({onCallback,onErr})=> {
+        onCallback({
+          accuracy : 5,
+          latitude : 35.865907,
+          longitude : 126.8576322481264,
+          time : new Date()
+        })
+
       }
     }
 
